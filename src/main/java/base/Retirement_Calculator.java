@@ -4,9 +4,8 @@
  */
 package base;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Retirement_Calculator {
@@ -32,9 +31,10 @@ public class Retirement_Calculator {
     }
 
     private void retirementYear() {
-        Date date = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy");
-        System.out.println("It's " + format.format(date) + ", so you can retire in " + LocalDate.now().plusYears(yearsLeft(agePrompt(), retirePrompt())));
+        LocalDate yearNow = LocalDate.now();
+        LocalDate yearRet = LocalDate.now().plusYears(yearsLeft(agePrompt(), retirePrompt()));
+        DateTimeFormatter newFormat = DateTimeFormatter.ofPattern("yyyy");
+        System.out.println("It's " + yearNow.format(newFormat) + ", so you can retire in " + yearRet.format(newFormat));
 
     }
 }
