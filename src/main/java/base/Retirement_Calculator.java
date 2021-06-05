@@ -5,6 +5,7 @@
 package base;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -26,13 +27,14 @@ public class Retirement_Calculator {
     }
 
     private int yearsLeft(int age, int ret) {
-        System.out.println("You have " + (ret - age) + " left until you can retire.");
+        System.out.println("You have " + (ret - age) + " years left until you can retire.");
         return ret - age;
     }
 
     private void retirementYear() {
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy");
-        System.out.println("It's " + format.format(date) + ", so you can retire in ");
+        System.out.println("It's " + format.format(date) + ", so you can retire in " + LocalDate.now().plusYears(yearsLeft(agePrompt(), retirePrompt())));
+
     }
 }
